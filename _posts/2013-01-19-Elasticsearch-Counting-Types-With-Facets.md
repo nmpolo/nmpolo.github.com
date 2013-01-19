@@ -19,68 +19,65 @@ One thing to note, however, is that this will not work with filters. You must
 use queries to get an accurate type facet count.
 
 So, to retrieve type counts, we can construct a query such as:
-```
-curl -XPOST 127.0.0.1:9200/test/user,company/_search?pretty -d '{
-    "facets": {
-        "typeHits": {
-            "terms": {
-                "field": "_type"
+
+    curl -XPOST 127.0.0.1:9200/test/user,company/_search?pretty -d '{
+        "facets": {
+            "typeHits": {
+                "terms": {
+                    "field": "_type"
+                }
             }
         }
-    }
-}'
-```
+    }'
 
 Or, using Elastica:
-``` php
-$query = new Elastica\Query();
-$facet = new Elastica\Facet\Terms('typeHits');
-$facet->setField('_type');
-$query->addFacet($facet);
-```
+
+    $query = new Elastica\Query();
+    $facet = new Elastica\Facet\Terms('typeHits');
+    $facet->setField('_type');
+    $query->addFacet($facet);
 
 This will give us a response such as:
-``` json
-{
-  "took" : 2,
-  "timed_out" : false,
-  "_shards" : {
-    "total" : 5,
-    "successful" : 5,
-    "failed" : 0
-  },
-  "hits" : {
-    "total" : 2,
-    "max_score" : 1.0,
-    "hits" : [ {
-      "_index" : "test",
-      "_type" : "user",
-      "_id" : "1",
-      "_score" : 1.0, "_source" : {"name":"Nick"}
-    }, {
-      "_index" : "test",
-      "_type" : "company",
-      "_id" : "1",
-      "_score" : 1.0, "_source" : {"name":"Acme"}
-    } ]
-  },
-  "facets" : {
-    "typeHits" : {
-      "_type" : "terms",
-      "missing" : 0,
-      "total" : 2,
-      "other" : 0,
-      "terms" : [ {
-        "term" : "user",
-        "count" : 1
-      }, {
-        "term" : "company",
-        "count" : 1
-      } ]
+
+    {
+      "took" : 2,
+      "timed_out" : false,
+      "_shards" : {
+        "total" : 5,
+        "successful" : 5,
+        "failed" : 0
+      },
+      "hits" : {
+        "total" : 2,
+        "max_score" : 1.0,
+        "hits" : [ {
+          "_index" : "test",
+          "_type" : "user",
+          "_id" : "1",
+          "_score" : 1.0, "_source" : {"name":"Nick"}
+        }, {
+          "_index" : "test",
+          "_type" : "company",
+          "_id" : "1",
+          "_score" : 1.0, "_source" : {"name":"Acme"}
+        } ]
+      },
+      "facets" : {
+        "typeHits" : {
+          "_type" : "terms",
+          "missing" : 0,
+          "total" : 2,
+          "other" : 0,
+          "terms" : [ {
+            "term" : "user",
+            "count" : 1
+          }, {
+            "term" : "company",
+            "count" : 1
+          } ]
+        }
+      }
     }
-  }
-}
-```
 
 The resulting json tells us our query matched 1 user type document and 1
 company type document.
