@@ -3,6 +3,8 @@ title: Symfony2 & Rest with FOSRestBundle
 layout: default
 ---
 
+tl;dr: [source code] (https://github.com/nmpolo/Symfony2Rest)
+
 [FOSRestBundle] (https://github.com/FriendsOfSymfony/FOSRestBundle) is an awesome bundle for creating REST APIs with [Symfony2] (https://github.com/symfony/symfony). This article will describe how to use the bundle along with [Doctrine2] (https://github.com/doctrine/doctrine2) and [JMSSerializerBundle] (https://github.com/schmittjoh/JMSSerializerBundle).
 
 ###The Application
