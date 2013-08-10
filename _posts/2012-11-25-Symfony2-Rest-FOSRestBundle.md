@@ -119,7 +119,7 @@ We can easily get all organisations using the entity's repository:
         );
     }
 
-####GET /organisation/id - Get a specific organisation
+####GET /organisations/id - Get a specific organisation
 
 Likewise, we can do something similar to get a specific organisation:
 
@@ -250,7 +250,7 @@ Now that we have the form, we can write the method to handle post requests:
 
 As we said in the routing that organisation was the parent of user, all the user routes are appended to the organisation route.
 
-For example, to create a new user, we must `POST /organisation/id/users`. To get a specific user, we must `GET /organisations/id/users/id`.
+For example, to create a new user, we must `POST /organisations/id/users`. To get a specific user, we must `GET /organisations/id/users/id`.
 
 Please see the source code on github for the user controller.
 
