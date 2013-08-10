@@ -1,6 +1,7 @@
 ---
 title: Phonegap build fails with a locales directory
 layout: default
+description: Creating a folder called locales will cause phonegap builds to fail for iOS.
 ---
 
 I've recently been using [PhoneGap] (http://phonegap.com/) to compile a

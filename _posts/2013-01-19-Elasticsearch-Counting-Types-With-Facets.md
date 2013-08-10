@@ -1,6 +1,7 @@
 ---
 title: Counting returned document types in elasticsearch
 layout: default
+description: Count the number of each document type returned by a query with facets in elasticsearch.
 ---
 
 [Elasticsearch] (http://www.elasticsearch.org) allows you to very easily search

@@ -1,6 +1,7 @@
 ---
 title: Symfony2 & Rest with FOSRestBundle
 layout: default
+description: How to create a RESTful API using Symfony2 with the FOSRestBundle.
 ---
 
 tl;dr: [source code] (https://github.com/nmpolo/Symfony2Rest)
