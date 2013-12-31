@@ -19,7 +19,8 @@ and if it contains files in an unsupported format, it fails to build.
 The simplest solution to this is to use a different directory name. If you're
 using the i18next plugin, you can specify the path when you initialize the
 plugin:
-
-    $.i18n.init({
-        resGetPath: 'locale/__lng__/__ns__.json'
-    });
+{% highlight javascript %}
+$.i18n.init({
+    resGetPath: 'locale/__lng__/__ns__.json'
+});
+{% endhighlight %}

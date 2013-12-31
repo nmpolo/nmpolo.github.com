@@ -1,0 +1,10 @@
+{
+    "name": "nmpolo.github.com",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:nmpolo/nmpolo.github.com.git"
+    },
+    "devDependencies": {
+        "grunt-contrib-less": "~0.8.1"
+    }
+}

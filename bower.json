@@ -1,0 +1,6 @@
+{
+    "name": "nmpolo.github.com",
+    "dependencies": {
+        "bootstrap": "3.0.3"
+    }
+}

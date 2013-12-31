@@ -11,12 +11,12 @@ navigation and footer on your website to improve the user's experience whilst
 waiting for your javascript to load.
 
 The easiest way to use pre-rendered templates is simply:
-```javascript
+{% highlight javascript %}
 var nav = new Marionette.Layout({el: $('#nav')});
 nav.bindUIElements();
-```
+{% endhighlight %}
 where `$('#nav')` contains your pre-rendered HTML.
 
 Additionally, if you want to attach a pre-rendered view to a region, rather
 than calling `App.region.show(view)`, instead call
-`App.region.attachView(view)` as [described by Derick Bailey](https://github.com/marionettejs/backbone.marionette/issues/343#issuecomment-10411387)
+`App.region.attachView(view)` as [described by Derick Bailey](https://github.com/marionettejs/backbone.marionette/issues/343#issuecomment-10411387).

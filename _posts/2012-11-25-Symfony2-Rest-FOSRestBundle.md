@@ -15,20 +15,24 @@ To demonstrate how FOSRestBundle can be used, we shall create a very simple appl
 ###Configuration
 
 To configure the application, we first need to add the FOSRestBundle to composer.json:
-```json
-#composer.json
-"friendsofsymfony/rest-bundle": "dev-master"
-```
+{% highlight json %}
+{
+    "require": {
+        "friendsofsymfony/rest-bundle": "dev-master"
+    }
+}
+{% endhighlight %}
 
 Next, register the FOSRestBundle and JMSSerializerBundle
-```php
+{% highlight php %}
+<?php
 #app/AppKernel.php
 new JMS\SerializerBundle\JMSSerializerBundle($this),
 new FOS\RestBundle\FOSRestBundle(),
-```
+{% endhighlight %}
 
 Disable the default view annotations and set up the FOSRest response listener:
-```yaml
+{% highlight yaml %}
 #app/config/config.yml
 sensio_framework_extra:
     view:
@@ -40,12 +44,12 @@ fos_rest:
     format_listener: true
     view:
         view_response_listener: 'force'
-```
+{% endhighlight %}
 
 ####Routing
 
 The RESTful routing is handled implicitly by the FOSRestBundle, we just need to tell it which controllers are RESTful:
-```yaml
+{% highlight yaml %}
 #src/Nmpolo/RestBundle/Resources/config/routing.yml
 organisation:
     type: rest
@@ -55,29 +59,30 @@ user:
     type: rest
     parent: organisation
     resource: Nmpolo\RestBundle\Controller\UserController
-```
+{% endhighlight %}
 
 And then tell the application to read our bundle's routing file:
-```yaml
+{% highlight yaml %}
 #app/config/routing.yml
 nmpolo:
     type: rest
     resource: "@NmpoloRestBundle/Resources/config/routing.yml"
-```
+{% endhighlight %}
 
 Due to the implicit routing, routes will be automatically generated for the actions within each controller.
 
 ###Models
 
 Now that the application is configured, we can create the two entities the application requires. These can be created using the Doctrine2 entity generator tool:
-```
+{% highlight bash %}
 php app/console doctrine:generate:entity
-```
+{% endhighlight %}
 
 Create an entity with the name `NmpoloRestBundle:Organisation` and then add a string field called `name`. Tell the tool to create an empty repository class and then confirm generation. Next, do the same again to create a `NmpoloRestBundle:User` entity.
 
 Now, we need to add the user => organisation relationship:
-```php
+{% highlight php %}
+<?php
 #src/Nmpolo/RestBundle/Entity/User.php
 /**
  * @ORM\ManyToOne(targetEntity="Organisation", inversedBy="users")
@@ -93,12 +98,12 @@ private $organisation;
  * @var Doctrine\Common\Collections\Collection $users
  */
 private $users
-```
+{% endhighlight %}
 
 The getters and setters can automatically be generated for this relationship by running:
-```
+{% highlight bash %}
 php app/console generate:doctrine:entities NmpoloRestBundle
-```
+{% endhighlight %}
 
 ###Controllers
 
@@ -107,7 +112,8 @@ Now that the entities have been created, we can create the controllers and actio
 ####GET /organisations - List the organisations
 
 We can easily get all organisations using the entity's repository:
-```php
+{% highlight php %}
+<?php
 #src/Nmpolo/RestBundle/Controller/OrganisationController.php
 /**
  * Collection get action
@@ -126,12 +132,13 @@ public function cgetAction(Request $request)
         'entities' => $entities,
     );
 }
-```
+{% endhighlight %}
 
 ####GET /organisations/id - Get a specific organisation
 
 Likewise, we can do something similar to get a specific organisation:
-```php
+{% highlight php %}
+<?php
 #src/Nmpolo/RestBundle/Controller/OrganisationController.php
 /**
  * Get entity instance
@@ -166,7 +173,7 @@ public function getAction($id)
             'entity' => $entity,
             );
 }
-```
+{% endhighlight %}
 
 ####POST /organisations - Create an organisation
 
@@ -177,7 +184,8 @@ By default, Symfony2 enables CSRF protection for forms. CSRF protection doesn't 
 Symfony2 will also set the form name as "nmpolo_restbundle_organisationtype" so this can be changed to just "organisation" or removed entirely if you don't require a root name.
 
 Now that we have the form, we can write the method to handle post requests:
-```php
+{% highlight php %}
+<?php
 #src/Nmpolo/RestBundle/Controller/OrganisationController.php
 /**
  * Collection post action
@@ -208,10 +216,11 @@ public function cpostAction(Request $request)
         'form' => $form,
     );
 }
-```
+{% endhighlight %}
 
 ####PUT /organisations/id - Update a specific organisation
-```php
+{% highlight php %}
+<?php
 #src/Nmpolo/RestBundle/Controller/OrganisationController.php
 /**
  * Put action
@@ -237,10 +246,11 @@ public function putAction(Request $request, $id)
         'form' => $form,
     );
 }
-```
+{% endhighlight %}
 
 ####DELETE /organisations/id - Delete a specific organisation
-```php
+{% highlight php %}
+<?php
 #src/Nmpolo/RestBundle/Controller/OrganisationController.php
 /**
  * Delete action
@@ -257,7 +267,7 @@ public function deleteAction($id)
 
     return $this->view(null, Codes::HTTP_NO_CONTENT);
 }
-```
+{% endhighlight %}
 
 ####User
 
@@ -274,9 +284,9 @@ JMSSerializerBundle allows us to specify in our request what content type we exp
 ####Exposing Properties
 
 The JMSSerializerBundle will, by default, expose all of an entity's properties. This is not ideal if you're storing, say, a user's password. Fortunately, the bundle has a great way to specify which properties to expose and which to exclude:
-```php
-#src/Nmpolo/RestBundle/Entity/User.php
+{% highlight php %}
 <?php
+#src/Nmpolo/RestBundle/Entity/User.php
 
 namespace Nmpolo\RestBundle\Entity;
 
@@ -323,7 +333,7 @@ class User
     private $organisation;
 
     ...
-```
+{% endhighlight %}
 
 Using `@ExclusionPolicy("all")` we set the serializer to exlude everything by default and then we define `@Expose` on anything that we do want to expose. In this example, the user's id and name is exposed but not their organisation.
 
