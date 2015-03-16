@@ -4,7 +4,7 @@ layout: default
 description: Count the number of each document type returned by a query with facets in elasticsearch.
 ---
 
-[Elasticsearch] (http://www.elasticsearch.org) allows you to very easily search
+[Elasticsearch](http://www.elasticsearch.org) allows you to very easily search
 across multiple document types. When you perform a search, you get the count of
 the total document hits along with some of the matching documents (10 by
 default). However, you may need to also show the total document hits for each
@@ -16,7 +16,7 @@ Users (746)
 Companies (277)
 {% endhighlight %}
 
-Fortunately, this can be accomplished using [facets] (http://www.elasticsearch.org/guide/reference/api/search/facets/index.html).
+Fortunately, this can be accomplished using [facets](http://www.elasticsearch.org/guide/reference/api/search/facets/index.html).
 One thing to note, however, is that this will not work with filters. You must
 use queries to get an accurate type facet count.
 

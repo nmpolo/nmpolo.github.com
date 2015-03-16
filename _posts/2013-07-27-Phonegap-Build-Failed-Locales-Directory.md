@@ -4,15 +4,15 @@ layout: default
 description: Creating a folder called locales will cause phonegap builds to fail for iOS.
 ---
 
-I've recently been using [PhoneGap] (http://phonegap.com/) to compile a
-[Backbone.js] (http://backbonejs.org/) app into a native iPhone app. The build
+I've recently been using [PhoneGap](http://phonegap.com/) to compile a
+[Backbone.js](http://backbonejs.org/) app into a native iPhone app. The build
 process kept working fine for all platforms except iPhone which failed every
 time with this unhelpful error message: `Oh geez. Your build failed. Sorry,
 but a problem occurred on the build server.`
 
 After finding no help on Google, I tried compiling only specific parts of the
 application and discovered that if I excluded the `locales` directory used by
-the [i18next] (http://i18next.com/) plugin, the build process went off without
+the [i18next](http://i18next.com/) plugin, the build process went off without
 a hitch. It turns out that PhoneGap specifically looks for a locales directory
 and if it contains files in an unsupported format, it fails to build.
 

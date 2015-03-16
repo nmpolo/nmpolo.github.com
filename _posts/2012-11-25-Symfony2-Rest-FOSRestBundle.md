@@ -4,9 +4,9 @@ layout: default
 description: How to create a RESTful API using Symfony2 with the FOSRestBundle.
 ---
 
-tl;dr: [source code] (https://github.com/nmpolo/Symfony2Rest)
+tl;dr: [source code](https://github.com/nmpolo/Symfony2Rest)
 
-[FOSRestBundle] (https://github.com/FriendsOfSymfony/FOSRestBundle) is an awesome bundle for creating REST APIs with [Symfony2] (https://github.com/symfony/symfony). This article will describe how to use the bundle along with [Doctrine2] (https://github.com/doctrine/doctrine2) and [JMSSerializerBundle] (https://github.com/schmittjoh/JMSSerializerBundle).
+[FOSRestBundle](https://github.com/FriendsOfSymfony/FOSRestBundle) is an awesome bundle for creating REST APIs with [Symfony2](https://github.com/symfony/symfony). This article will describe how to use the bundle along with [Doctrine2](https://github.com/doctrine/doctrine2) and [JMSSerializerBundle](https://github.com/schmittjoh/JMSSerializerBundle).
 
 ###The Application
 
@@ -353,10 +353,10 @@ Updates to and deletions of existing entities will result in a 204 No Content he
 
 ###Source
 
-The source code for this example is available [on github] (https://github.com/nmpolo/Symfony2Rest/).
+The source code for this example is available [on github](https://github.com/nmpolo/Symfony2Rest/).
 
 ###References
 
-[FOSRestBundle Documentation] (https://github.com/FriendsOfSymfony/FOSRestBundle/blob/master/Resources/doc/index.md)
+[FOSRestBundle Documentation](https://github.com/FriendsOfSymfony/FOSRestBundle/blob/master/Resources/doc/index.md)
 
-[REST APIs with Symfony2: The Right Way] (http://williamdurand.fr/2012/08/02/rest-apis-with-symfony2-the-right-way/)
+[REST APIs with Symfony2: The Right Way](http://williamdurand.fr/2012/08/02/rest-apis-with-symfony2-the-right-way/)
