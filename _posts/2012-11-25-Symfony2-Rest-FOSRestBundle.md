@@ -8,11 +8,11 @@ tl;dr: [source code](https://github.com/nmpolo/Symfony2Rest)
 
 [FOSRestBundle](https://github.com/FriendsOfSymfony/FOSRestBundle) is an awesome bundle for creating REST APIs with [Symfony2](https://github.com/symfony/symfony). This article will describe how to use the bundle along with [Doctrine2](https://github.com/doctrine/doctrine2) and [JMSSerializerBundle](https://github.com/schmittjoh/JMSSerializerBundle).
 
-###The Application
+### The Application
 
 To demonstrate how FOSRestBundle can be used, we shall create a very simple application. It will allow CRUDL operations on two entities: organisations and users. Each user will belong to one organisation.
 
-###Configuration
+### Configuration
 
 To configure the application, we first need to add the FOSRestBundle to composer.json:
 {% highlight json %}
@@ -46,7 +46,7 @@ fos_rest:
         view_response_listener: 'force'
 {% endhighlight %}
 
-####Routing
+#### Routing
 
 The RESTful routing is handled implicitly by the FOSRestBundle, we just need to tell it which controllers are RESTful:
 {% highlight yaml %}
@@ -71,7 +71,7 @@ nmpolo:
 
 Due to the implicit routing, routes will be automatically generated for the actions within each controller.
 
-###Models
+### Models
 
 Now that the application is configured, we can create the two entities the application requires. These can be created using the Doctrine2 entity generator tool:
 {% highlight bash %}
@@ -105,11 +105,11 @@ The getters and setters can automatically be generated for this relationship by 
 php app/console generate:doctrine:entities NmpoloRestBundle
 {% endhighlight %}
 
-###Controllers
+### Controllers
 
 Now that the entities have been created, we can create the controllers and actions used to manipulate them.
 
-####GET /organisations - List the organisations
+#### GET /organisations - List the organisations
 
 We can easily get all organisations using the entity's repository:
 {% highlight php %}
@@ -134,7 +134,7 @@ public function cgetAction(Request $request)
 }
 {% endhighlight %}
 
-####GET /organisations/id - Get a specific organisation
+#### GET /organisations/id - Get a specific organisation
 
 Likewise, we can do something similar to get a specific organisation:
 {% highlight php %}
@@ -175,7 +175,7 @@ public function getAction($id)
 }
 {% endhighlight %}
 
-####POST /organisations - Create an organisation
+#### POST /organisations - Create an organisation
 
 Creating an organisation first requires a form we can use to bind a request to. You can automatically generate a form for a Doctrine entity using the command line tool: `php app/console generate:doctrine:form NmpoloRestBundle:Organisation`.
 
@@ -218,7 +218,7 @@ public function cpostAction(Request $request)
 }
 {% endhighlight %}
 
-####PUT /organisations/id - Update a specific organisation
+#### PUT /organisations/id - Update a specific organisation
 {% highlight php %}
 <?php
 #src/Nmpolo/RestBundle/Controller/OrganisationController.php
@@ -248,7 +248,7 @@ public function putAction(Request $request, $id)
 }
 {% endhighlight %}
 
-####DELETE /organisations/id - Delete a specific organisation
+#### DELETE /organisations/id - Delete a specific organisation
 {% highlight php %}
 <?php
 #src/Nmpolo/RestBundle/Controller/OrganisationController.php
@@ -269,7 +269,7 @@ public function deleteAction($id)
 }
 {% endhighlight %}
 
-####User
+#### User
 
 As we said in the routing that organisation was the parent of user, all the user routes are appended to the organisation route.
 
@@ -277,11 +277,11 @@ For example, to create a new user, we must `POST /organisations/id/users`. To ge
 
 Please see the source code on github for the user controller.
 
-###Views
+### Views
 
 JMSSerializerBundle allows us to specify in our request what content type we expect to be returned. For example, if we send the header `Accept: application/json`, we will receive json. Likewise with application/xml. If we want to receive HTML, we will also have to create views to output the data. To see example view scripts, please checkout the example code on github.
 
-####Exposing Properties
+#### Exposing Properties
 
 The JMSSerializerBundle will, by default, expose all of an entity's properties. This is not ideal if you're storing, say, a user's password. Fortunately, the bundle has a great way to specify which properties to expose and which to exclude:
 {% highlight php %}
@@ -337,7 +337,7 @@ class User
 
 Using `@ExclusionPolicy("all")` we set the serializer to exlude everything by default and then we define `@Expose` on anything that we do want to expose. In this example, the user's id and name is exposed but not their organisation.
 
-###Response
+### Response
 
 Response is an integral part of a REST API.
 
@@ -351,11 +351,11 @@ When creating a new entity, a 201 Created header is returned with a location hea
 
 Updates to and deletions of existing entities will result in a 204 No Content header.
 
-###Source
+### Source
 
 The source code for this example is available [on github](https://github.com/nmpolo/Symfony2Rest/).
 
-###References
+### References
 
 [FOSRestBundle Documentation](https://symfony.com/doc/master/bundles/FOSRestBundle/index.html)
 
