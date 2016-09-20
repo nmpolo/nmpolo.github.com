@@ -357,6 +357,6 @@ The source code for this example is available [on github](https://github.com/nmp
 
 ###References
 
-[FOSRestBundle Documentation](https://github.com/FriendsOfSymfony/FOSRestBundle/blob/master/Resources/doc/index.md)
+[FOSRestBundle Documentation](https://symfony.com/doc/master/bundles/FOSRestBundle/index.html)
 
 [REST APIs with Symfony2: The Right Way](http://williamdurand.fr/2012/08/02/rest-apis-with-symfony2-the-right-way/)
