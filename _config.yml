@@ -1,2 +1,7 @@
-highligher: rouge
+gems:
+  - jekyll-feed
 url: http://npmasters.com
+title: Nicholas Masters
+author:
+    name: Nicholas Masters
+    email: nick@npmasters.com

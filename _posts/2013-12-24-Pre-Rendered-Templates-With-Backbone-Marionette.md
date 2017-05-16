@@ -1,6 +1,7 @@
 ---
 title: Pre-Rendered Templates With Backbone Marionette
 layout: default
+description: How to use a template that's already rendered by the server in Backbone.Marionette
 ---
 
 In [Backbone Marionette](http://marionettejs.com/), you would normally call
